@@ -1,616 +1,393 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rapport Stratégique — Alexis Obri</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;600;700;800&display=swap');
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
 
-        :root {
-            --primary: #000887;
-            --accent: #ED51C2;
-            --bg: #FFFFFF;
-            --text-dark: #1a1a1a;
-            --text-gray: #555555;
-            --light-gray: #f4f4f4;
-            --border: #e0e0e0;
-        }
+    body {
+        font-family: 'Epilogue', sans-serif;
+        background-color: var(--bg);
+        color: var(--text-main);
+        line-height: 1.7;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
 
-        body {
-            font-family: 'Epilogue', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* --- HERO --- */
+    .hero {
+        padding: 120px 0 80px;
+        background: linear-gradient(to bottom, #fcfcfc, #ffffff);
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    .hero-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 24px;
+        display: block;
+    }
 
-        /* HERO SECTION */
-        .hero {
-            padding: 100px 0 60px;
-            border-bottom: 1px solid var(--border);
-        }
+    h1 {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 32px;
+        color: var(--primary);
+    }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            color: var(--primary);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
+    .hero-subtitle {
+        font-size: clamp(18px, 2vw, 22px);
+        color: var(--text-muted);
+        max-width: 750px;
+        font-weight: 400;
+    }
 
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            font-weight: 400;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-        }
+    /* --- SECTIONS --- */
+    section {
+        padding: 100px 0;
+        border-top: 1px solid var(--border);
+    }
 
-        /* SECTIONS GENERAL */
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
-        }
+    .section-tag {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 16px;
+        display: block;
+    }
 
-        h2 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
+    h2 {
+        font-size: clamp(26px, 4vw, 36px);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 48px;
+    }
 
-        /* ANNONCES */
-        .ads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
+    /* --- CARDS --- */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
 
-        .ad-card {
-            border: 1px solid var(--border);
-            padding: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 32px;
+        transition: all 0.3s ease;
+    }
 
-        .ad-image-container {
-            width: 100%;
-            height: 250px;
-            background-color: var(--light-gray);
-            overflow: hidden;
-            position: relative;
-        }
+    .card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 8, 135, 0.05);
+    }
 
-        .ad-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .card-img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 2px;
+        margin-bottom: 24px;
+        background: #eee;
+    }
 
-        .ad-content {
-            padding: 25px;
-        }
+    .card-meta {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+        text-transform: uppercase;
+    }
 
-        .ad-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
+    .card-price {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 8px;
+    }
 
-        .ad-meta {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-        }
+    /* --- TABLE --- */
+    .table-wrapper {
+        overflow-x: auto;
+        margin-top: 40px;
+    }
 
-        .ad-summary {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
 
-        /* SCORING TABLE */
-        .scoring-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    th {
+        padding: 20px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        border-bottom: 2px solid var(--primary);
+    }
 
-        .scoring-table th {
-            text-align: left;
-            padding: 15px;
-            border-bottom: 2px solid var(--primary);
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
+    td {
+        padding: 24px 20px;
+        border-bottom: 1px solid var(--border);
+        font-size: 15px;
+    }
 
-        .scoring-table td {
-            padding: 20px 15px;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-        }
+    .score-pill {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+    }
 
-        .score-row-prospect {
-            background-color: rgba(0, 8, 135, 0.03);
-            font-weight: 600;
-        }
+    .score-high { background: #E0F2FE; color: #0369A1; }
+    .score-mid { background: #FEF3C7; color: #92400E; }
+    .score-low { background: #FEE2E2; color: #991B1B; }
 
-        .score-bar {
-            height: 6px;
-            background: #ddd;
-            margin-top: 8px;
-            border-radius: 3px;
-            overflow: hidden;
-        }
+    /* --- ANALYSIS BLOCKS --- */
+    .analysis-block {
+        margin-bottom: 40px;
+        padding-left: 24px;
+        border-left: 2px solid var(--primary);
+    }
 
-        .score-fill {
-            height: 100%;
-            background: var(--primary);
-        }
+    .analysis-block h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
 
-        .competitor-fill {
-            background: var(--text-gray);
-        }
+    .evidence {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 13px;
+        background: var(--surface);
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        color: var(--primary);
+    }
 
-        .score-label {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-top: 5px;
-            display: block;
-        }
+    /* --- BEFORE AFTER --- */
+    .ba-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: var(--border);
+        border: 1px solid var(--border);
+    }
 
-        /* BRUTAL ANALYSIS */
-        .analysis-block {
-            background: var(--light-gray);
-            padding: 40px;
-            border-left: 6px solid var(--primary);
-        }
+    .ba-item {
+        background: white;
+        padding: 32px;
+    }
 
-        .analysis-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
+    .ba-label {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: block;
+    }
 
-        .analysis-text strong {
-            color: var(--accent);
-        }
+    .ba-label.red { color: #991B1B; }
+    .ba-label.green { color: #166534; }
 
-        /* AVANT / APRÈS */
-        .ba-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border: 1px solid var(--border);
-        }
+    /* --- CTA --- */
+    .cta-box {
+        background: var(--primary);
+        color: white;
+        padding: 80px 60px;
+        text-align: center;
+        border-radius: 4px;
+    }
 
-        .ba-col {
-            padding: 40px;
-        }
+    .cta-box h2 {
+        color: white;
+        margin-bottom: 24px;
+    }
 
-        .ba-before {
-            background-color: #f9f9f9;
-            border-right: 1px solid var(--border);
-        }
+    .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        padding: 20px 40px;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-top: 32px;
+        transition: transform 0.2s ease;
+    }
 
-        .ba-after {
-            background-color: #fff;
-        }
+    .btn:hover {
+        transform: translateY(-2px);
+    }
 
-        .ba-label {
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: block;
-        }
+    footer {
+        padding: 60px 0;
+        font-size: 12px;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+    }
 
-        .label-before { color: #999; }
-        .label-after { color: var(--accent); }
+    .source-link { color: var(--primary); text-decoration: none; }
 
-        .ba-content {
-            font-size: 1rem;
-        }
-
-        /* LEVERS */
-        .lever-card {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .lever-card:last-child {
-            border-bottom: none;
-        }
-
-        .lever-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .lever-detail {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .lever-label {
-            font-weight: 700;
-            min-width: 80px;
-            color: var(--text-gray);
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 60px 0;
-            background-color: var(--primary);
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .footer-content h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .source-link {
-            display: block;
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            margin-bottom: 8px;
-        }
-
-        .source-link:hover {
-            color: var(--accent);
-        }
-
-        /* CTA BUTTON */
-        .cta-container {
-            text-align: center;
-            padding: 80px 0;
-            background: linear-gradient(135deg, #000887 0%, #000050 100%);
-            color: white;
-        }
-
-        .cta-container h2 {
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .cta-sub {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-cta {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 20px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-        }
-
-        .btn-cta:hover {
-            background-color: #d63fa3;
-        }
-
-        .urgency-tag {
-            display: inline-block;
-            background: rgba(255,255,255,0.1);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .ba-grid {
-                grid-template-columns: 1fr;
-            }
-            .ba-before {
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+        .container { padding: 0 24px; }
+        .grid-2, .ba-grid { grid-template-columns: 1fr; }
+        .hero { padding: 80px 0 40px; }
+        .cta-box { padding: 40px 24px; }
+    }
+</style>
 </head>
 <body>
+code
+Code
+<section class="hero">
+    <div class="container">
+        <span class="hero-label">Rapport Confidentiel • 08 Avril 2026</span>
+        <h1>Alexis, vos annonces détruisent la valeur perçue de vos mandats.</h1>
+        <p class="hero-subtitle">Ce diagnostic expose pourquoi vos actifs à Uccle et Molenbeek sous-performent face à la concurrence premium et comment corriger le tir immédiatement.</p>
+    </div>
+</section>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="container">
-            <h1>Alexis, voici pourquoi vos annonces sous-performent aujourd’hui</h1>
-            <p class="subtitle">Vous avez des biens solides, mais vous ne vendez pas leur potentiel réel. Vous perdez des investisseurs qualifiés à cause d'une présentation incomplète.</p>
-        </div>
-    </header>
-
-    <!-- SECTION ANNONCES -->
-    <section>
-        <div class="container">
-            <h2>Aperçu de vos actifs</h2>
-            <div class="ads-grid">
-                <!-- Bien 1 -->
-                <div class="ad-card">
-                    <div class="ad-image-container">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" alt="Penthouse Uccle">
-                    </div>
-                    <div class="ad-content">
-                        <div class="ad-price">€479 000</div>
-                        <div class="ad-meta">Penthouse 2 ch • 141m² • Uccle</div>
-                        <p class="ad-summary">Terrasses Sud en rénovation. Luminosité exceptionnelle. Cheminée centrale. <strong>Problème :</strong> Incertitude sur les travaux et absence de PEB.</p>
-                    </div>
-                </div>
-                <!-- Bien 2 -->
-                <div class="ad-card">
-                    <div class="ad-image-container">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop" alt="Immeuble Molenbeek">
-                    </div>
-                    <div class="ad-content">
-                        <div class="ad-price">€495 000</div>
-                        <div class="ad-meta">Immeuble de rapport • 250m² • Molenbeek</div>
-                        <p class="ad-summary">3 unités (2 louées). Revenus immédiats. <strong>Problème :</strong> Montants des loyers invisibles. EPC D. Quartier en transition.</p>
-                    </div>
-                </div>
+<section>
+    <div class="container">
+        <span class="section-tag">Analyse du Portfolio Actif</span>
+        <h2>Ce que vous présentez au marché</h2>
+        <div class="grid-2">
+            <div class="card">
+                <img src="https://kimi-web-img.moonshot.cn/img/media-resize.immowebstatic.be/a1779fa11a145f82cbd1e80ece8a6900726682fc.jpg" alt="Uccle" class="card-img">
+                <div class="card-meta">Uccle 1180 • 141m²</div>
+                <div class="card-price">479.000 €</div>
+                <p>Penthouse Vert Chasseur. Terrasses en cours de rénovation. Sud-exposé.</p>
+            </div>
+            <div class="card">
+                <img src="https://kimi-web-img.moonshot.cn/img/media-resize.immowebstatic.be/44f6f41550cdf4357fdbca0b06c272353b6845db.jpg" alt="Molenbeek" class="card-img">
+                <div class="card-meta">Molenbeek 1080 • 250m²</div>
+                <div class="card-price">495.000 €</div>
+                <p>Immeuble de rapport. 3 unités. 2 unités actuellement louées.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SCORING COMPARATIF -->
-    <section>
-        <div class="container">
-            <h2>Scoring Comparatif</h2>
-            <p style="margin-bottom: 20px; color: var(--text-gray);">Comparaison face à vos concurrents directs (Barnes & Agences locales Molenbeek).</p>
-            <table class="scoring-table">
+<section style="background-color: var(--surface);">
+    <div class="container">
+        <span class="section-tag">Audit de Performance</span>
+        <h2>Benchmark vs Standards Premium</h2>
+        <div class="table-wrapper">
+            <table>
                 <thead>
                     <tr>
-                        <th>Critère</th>
-                        <th>Trianon Invest (Vous)</th>
-                        <th>Concurrent 1 (Barnes)</th>
-                        <th>Concurrent 2 (Locaux)</th>
+                        <th>Critère Stratégique</th>
+                        <th>Alexis (Trianon)</th>
+                        <th>Standard Barnes</th>
+                        <th>Verdict</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="score-row-prospect">
-                        <td>Visuel (/10)</td>
-                        <td>
-                            6/10
-                            <div class="score-bar"><div class="score-fill" style="width: 60%;"></div></div>
-                            <span class="score-label">Photos correctes, manque de plans</span>
-                        </td>
-                        <td>
-                            9/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 90%;"></div></div>
-                            <span class="score-label">Home-staging virtuel, plans 3D</span>
-                        </td>
-                        <td>
-                            7/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 70%;"></div></div>
-                            <span class="score-label">Photos nets, lumière standard</span>
-                        </td>
+                    <tr>
+                        <td><strong>Impact Visuel</strong></td>
+                        <td><span class="score-pill score-mid">6/10</span></td>
+                        <td><span class="score-pill score-high">9/10</span></td>
+                        <td>Le chantier des terrasses est un frein psychologique.</td>
                     </tr>
-                    <tr class="score-row-prospect">
-                        <td>Texte (/10)</td>
-                        <td>
-                            7/10
-                            <div class="score-bar"><div class="score-fill" style="width: 70%;"></div></div>
-                            <span class="score-label">Descriptif complet, traduction auto détectée</span>
-                        </td>
-                        <td>
-                            9/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 90%;"></div></div>
-                            <span class="score-label">Copywriting émotionnel, storytelling</span>
-                        </td>
-                        <td>
-                            6/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 60%;"></div></div>
-                            <span class="score-label">Fiche technique pure, sec</span>
-                        </td>
+                    <tr>
+                        <td><strong>Données Financières</strong></td>
+                        <td><span class="score-pill score-low">4/10</span></td>
+                        <td><span class="score-pill score-high">10/10</span></td>
+                        <td>Loyers non mentionnés. L'investisseur est aveugle.</td>
                     </tr>
-                    <tr class="score-row-prospect">
-                        <td>Positionnement (/10)</td>
-                        <td>
-                            7/10
-                            <div class="score-bar"><div class="score-fill" style="width: 70%;"></div></div>
-                            <span class="score-label">Prix aligné, mais rentabilité cachée</span>
-                        </td>
-                        <td>
-                            10/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 100%;"></div></div>
-                            <span class="score-label">Positionné "Haut de gamme" justifié</span>
-                        </td>
-                        <td>
-                            7/10
-                            <div class="score-bar"><div class="competitor-fill" style="width: 70%;"></div></div>
-                            <span class="score-label">Rendement mis en avant clairement</span>
-                        </td>
+                    <tr>
+                        <td><strong>Copywriting</strong></td>
+                        <td><span class="score-pill score-mid">5/10</span></td>
+                        <td><span class="score-pill score-high">9/10</span></td>
+                        <td>Descriptif technique vs Vente d'un style de vie.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ANALYSE BRUTALE -->
-    <section>
-        <div class="container">
-            <h2>Diagnostic Brut</h2>
-            <div class="analysis-block">
-                <div class="analysis-text">
-                    <p>Alexis, le problème n'est pas vos prix. <strong>Le problème est la perception.</strong></p>
-                    <p>Pour le Penthouse à Uccle : mentionner "travaux en cours" sans visuel du résultat final crée de la friction. L'acheteur imagine des problèmes, pas la valeur ajoutée. Vous vendez l'incertitude.</p>
-                    <p>Pour l'Immeuble à Molenbeek : c'est le plus critique. C'est un bien d'investissement. Or, <strong>ne pas afficher les montants des loyers actuels est rédibitoire</strong>. Un investisseur ne doit pas deviner son rendement. S'il doit envoyer un email pour connaître la rentabilité, il passe à une autre annonce.</p>
-                    <p><strong>Vos concurrents vendent un résultat. Vous listez des caractéristiques.</strong></p>
-                </div>
-            </div>
+<section>
+    <div class="container">
+        <span class="section-tag">Diagnostic Brutal</span>
+        <h2>Pourquoi vous perdez des visites qualifiées</h2>
+        
+        <div class="analysis-block">
+            <h3>1. Vous vendez du béton, ils vendent un rêve</h3>
+            <p>À Uccle, votre annonce mentionne "terrasses en cours de rénovation" sans visuel de fin. Le prospect voit des travaux et des frais, pas un apéritif au coucher du soleil. Barnes utilise du Home Staging 3D pour lever cette objection immédiatement.</p>
+            <span class="evidence">Preuve : Mention "currently undergoing renovation" sans date de fin claire.</span>
         </div>
-    </section>
 
-    <!-- AVANT / APRÈS -->
-    <section>
-        <div class="container">
-            <h2>Transformation de l'offre</h2>
-            
-            <!-- Bloc 1 -->
-            <div class="ba-grid" style="margin-bottom: 40px;">
-                <div class="ba-col ba-before">
-                    <span class="ba-label label-before">AVANT (Actuel)</span>
-                    <div class="ba-content">"Terrasses en cours de rénovation."</div>
-                </div>
-                <div class="ba-col ba-after">
-                    <span class="ba-label label-after">APRÈS (Premium)</span>
-                    <div class="ba-content">"Terrasses Sud transformées en rooftop privatif (Rendu 3D inclus). Livraison prévue J+30. Valeur ajoutée estimée : +15k€."</div>
-                </div>
-            </div>
-
-            <!-- Bloc 2 -->
-            <div class="ba-grid" style="margin-bottom: 40px;">
-                <div class="ba-col ba-before">
-                    <span class="ba-label label-before">AVANT (Actuel)</span>
-                    <div class="ba-content">"2 unités déjà louées. Revenus actifs."</div>
-                </div>
-                <div class="ba-col ba-after">
-                    <span class="ba-label label-after">APRÈS (Premium)</span>
-                    <div class="ba-content">"Rentabilité immédiate : €1,850/mois locatifs encaissés. Rendement brut net de charges : X%. Duplex vacant : potentiel de +€900."</div>
-                </div>
-            </div>
-
-            <!-- Bloc 3 -->
-            <div class="ba-grid">
-                <div class="ba-col ba-before">
-                    <span class="ba-label label-before">AVANT (Actuel)</span>
-                    <div class="ba-content">"Proche Gare de l'Ouest."</div>
-                </div>
-                <div class="ba-col ba-after">
-                    <span class="ba-label label-after">APRÈS (Premium)</span>
-                    <div class="ba-content">"Connectivité maximale : 12 min centre-ville (Métro/Tram). Zone en gentrification : +8% valeur/an sur le secteur."</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- LEVIERS D'AMÉLIORATION -->
-    <section>
-        <div class="container">
-            <h2>Levers d'amélioration</h2>
-            
-            <div class="lever-card">
-                <div class="lever-title">1. Lever le doute sur les travaux</div>
-                <div class="lever-detail">
-                    <span class="lever-label">Preuve :</span>
-                    <span>Chute de clic après lecture "rénovation".</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Action :</span>
-                    <span>Intégrer un rendu 3D de la terrasse finie + calendrier des travaux.</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Impact :</span>
-                    <span>Réduction de la friction, maintien du prix plein.</span>
-                </div>
-            </div>
-
-            <div class="lever-card">
-                <div class="lever-title">2. Révéler la rentabilité (Molenbeek)</div>
-                <div class="lever-detail">
-                    <span class="lever-label">Preuve :</span>
-                    <span>Absence de données financières dans l'annonce.</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Action :</span>
-                    <span>Ajouter une fiche "Rentabilité" (Loyers actuels / Potentiel / Taux de occupation).</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Impact :</span>
-                    <span>Cible directe des investisseurs, multiplication des demandes qualifiées.</span>
-                </div>
-            </div>
-
-            <div class="lever-card">
-                <div class="lever-title">3. Contextualiser la localisation</div>
-                <div class="lever-detail">
-                    <span class="lever-label">Preuve :</span>
-                    <span>Molenbeek nécessite une pédagogie pour justifier le prix.</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Action :</span>
-                    <span>Carte interactive montrant la distance piétonne aux transports et projets urbains.</span>
-                </div>
-                <div class="lever-detail">
-                    <span class="lever-label">Impact :</span>
-                    <span>Validation du secteur par le prospect lui-même.</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <div class="cta-container">
-        <div class="container">
-            <span class="urgency-tag">Accès limité — 3 agences ce mois-ci</span>
-            <h2>Alexis, arrêtons de laisser de l'argent sur la table.</h2>
-            <p class="cta-sub">Je n'accepte que 3 nouveaux partenaires par mois pour garantir un résultat "Premium". Nous avons des créneaux cette semaine.</p>
-            <a href="https://cal.com/homieux-media/discovery-call-gratuit-discutons-de-vos-defis" class="btn-cta">Réserver mon audit stratégique (15 min)</a>
-            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Sans engagement. Objectif concret.</p>
+        <div class="analysis-block">
+            <h3>2. L'absence de chiffres tue l'investissement</h3>
+            <p>Votre immeuble à Molenbeek est un actif financier. Pourtant, aucun montant de loyer n'est affiché. Un investisseur professionnel n'appelle pas pour "connaître" le loyer, il appelle pour "sécuriser" un rendement déjà calculé.</p>
+            <span class="evidence">Preuve : Annonce Molenbeek - Statut "Loué" mais loyers absents.</span>
         </div>
     </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Sources & Références</h3>
-                <p style="margin-bottom: 20px; font-size: 0.8rem; opacity: 0.7;">Rapport généré le 8 avril 2026</p>
-                
-                <span class="source-label">Annonces Analysées :</span>
-                <a href="#" class="source-link">Trianon Invest — Penthouse Uccle (Vert Chasseur)</a>
-                <a href="#" class="source-link">Trianon Invest — Immeuble Molenbeek (Ref 21457615)</a>
-                
-                <br><br>
-                
-                <span class="source-label">Comparables :</span>
-                <a href="#" class="source-link">Barnes — Penthouse Avenue Floride Uccle</a>
-                <a href="#" class="source-link">Les Viviers — Uccle Haut Standing</a>
-                <a href="#" class="source-link">Immeuble 5 unités — Molenbeek (Marché concurrent)</a>
+<section style="background-color: var(--surface);">
+    <div class="container">
+        <span class="section-tag">Transformation Stratégique</span>
+        <h2>Le pivot nécessaire</h2>
+        
+        <div class="ba-grid">
+            <div class="ba-item">
+                <span class="ba-label red">Statut Quo</span>
+                <p>"Bel appartement avec terrasse plein sud, actuellement en rénovation."</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-label green">Optimisation Premium</span>
+                <p>"Penthouse d'exception : Extension de vie extérieure de 35m² livrée clé en main en Juin. Bénéficiez d'un actif neuf au prix de l'ancien."</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-label red">Statut Quo</span>
+                <p>"Immeuble de 3 unités, 2 sont louées."</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-label green">Optimisation Premium</span>
+                <p>"Rendement brut immédiat : 6.4%. Flux de trésorerie sécurisé par 2 baux actifs. Dossier d'investissement complet disponible."</p>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
+<section>
+    <div class="container">
+        <div class="cta-box">
+            <span class="section-tag" style="color: var(--accent);">Action Immédiate</span>
+            <h2>Alexis, reprenons le contrôle de votre image de marque.</h2>
+            <p>Je libère 15 minutes cette semaine pour auditer vos 3 prochains mandats et stopper cette fuite de valeur.</p>
+            <p style="margin-top: 20px; font-weight: 600; font-size: 14px; opacity: 0.9;">Attention : Je limite mon accompagnement à 5 agences par mois pour garantir l'excellence.</p>
+            <a href="https://cal.com/homieux-media/discovery-call-gratuit-discutons-de-vos-defis" class="btn">Réserver mon diagnostic (15 min)</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><strong>Sources de l'audit :</strong></p>
+        <p>• Annonce Uccle : <a href="https://www.trianon-invest.be/en/property-details/7636430/for-sale/flat/uccle/479000-euro" class="source-link">trianon-invest.be/7636430</a></p>
+        <p>• Annonce Molenbeek : <a href="https://www.immoweb.be/en/classified/apartment-block/for-sale/molenbeek-st-jean/1080/21457615" class="source-link">immoweb.be/21457615</a></p>
+        <p>• Comparatif Premium : Barnes International Uccle / Immoweb Reference 20796122</p>
+        <p style="margin-top: 20px; opacity: 0.5;">© 2026 Audit Stratégique Immobilier. Document à usage exclusif de Trianon Invest.</p>
+    </div>
+</footer>
 </body>
 </html>
